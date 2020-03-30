@@ -1,0 +1,8 @@
+(:date-published "2020-03-17"
+ :author "Arjen Dijkstra"
+ :title "Common Lisp development"
+ :file "common-lisp-development.md"
+ :slug "lisp-development"
+ :date-updated "2020-03-25"
+ :excerpt "The miracles of the format function/macro of Common Lisp."
+ :tags ("lisp" "development" "print"))
