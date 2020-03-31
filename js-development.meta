@@ -1,7 +1,7 @@
 (:date-published "2020-03-25"
  :author "Jeroen Peters"
  :title "Javascript development"
- :file "js-development.md"
+ :file "js-development.html"
  :slug "js-development"
  :excerpt "How to just write stuff to the DOM"
  :tags ("js" "javascript" "development" "print"))

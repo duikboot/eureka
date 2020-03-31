@@ -1,6 +1,6 @@
 (:date-published "2020-03-18"
  :author "Arjen Dijkstra"
  :title "Python development"
- :file "python-development.md"
+ :file "python-development.html"
  :slug "python-development"
  :tags ("python" "development" "print"))

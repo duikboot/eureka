@@ -1,6 +1,6 @@
 (:date-published "2020-03-21"
  :author "Jeroen Peters"
  :title "PHP development"
- :file "php-development.md"
+ :file "php-development.html"
  :slug "php-development"
  :tags ("php" "development" "print"))
