@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>running-celery-with-flask-docker-rabbitmq</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="sample-dockerized-flask-application-using-celery-flower-rabbitmq-and-postgresql.">Sample dockerized Flask application using Celery, Flower, Rabbitmq and PostgreSQL.</h1>
+<p>This repository is for running a simple dummy flask application in a docker environment.</p>
+<p>It uses:</p>
+<ul>
+<li>Flask</li>
+<li>Celery</li>
+<li>Flower</li>
+<li>Rabbitmq</li>
+<li>PostgreSQL (not doing anything, though)</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Make sure you have docker and docker-compose installed.</p>
+<h2 id="running">Running</h2>
+<p>Clone this repository and navigate into it in your terminal. Run in development mode, so set APP_ENV environment to Dev</p>
+<pre><code>APP_ENV=Dev docker-compose up --build</code></pre>
+<p>It will expose 3 ports, one for the flask application (8000), one for the RabbitMQ management interface (15672) and one for the Flower interface.</p>
+<p>When it runs, you can test it with several curl posts request and check it running in the Flower interface.</p>
+<pre><code>curl --data &#39;{json}&#39; -H &#39;Content-Type: application/json&#39; 0.0.0.0:8000/api/process_data</code></pre>
+<p>It will return a task_id, which you can search for in Flower <a href="http://0.0.0.0:9999/tasks">http://localhost:9999</a>.</p>
+<p>The RabbitMQ interface <a href="http://0.0.0.0:15672/">http://localhost:15672</a> with login: - username: rabbit_user - password: rabbit_password</p>
+</body>
+</html>
