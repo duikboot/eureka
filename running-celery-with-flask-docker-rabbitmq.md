@@ -2,8 +2,11 @@
 
 # Sample dockerized Flask application using Celery, Flower, Rabbitmq and PostgreSQL.
 
-This repository is for running a simple dummy flask application in a docker environment.
+Based on [Zero to Hero: Flask Production Recipes](https://www.toptal.com/flask/flask-production-recipes),
+which didn't run on my machine, so I altered the code a litte.. Futhermore I added Flower to monitor the Celery tasks.
 
+
+You can clone the code from github: [duikboot/flask-docker-celery-rabbitmq](https://github.com/duikboot/flask-docker-celery-rabbitmq)
 It uses:
 
 - Flask
@@ -31,6 +34,8 @@ When it runs, you can test it with several curl posts request and check it runni
     curl --data '{json}' -H 'Content-Type: application/json' 0.0.0.0:8000/api/process_data
 
 It will return a task_id, which you can search for in Flower [http://localhost:9999](http://0.0.0.0:9999/tasks).
+
+![](/posts/images/flower.png "Running Flower.")
 
 The RabbitMQ interface [http://localhost:15672](http://0.0.0.0:15672/) with login:
 - username: rabbit_user

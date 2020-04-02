@@ -1,6 +1,6 @@
 (:date-published "2020-04-01"
  :author "Arjen Dijkstra"
- :title "Running Celery with Flask, Docker, RabbitMQ"
+ :title "Running Celery with Flask, Docker, RabbitMQ with Docker-compose"
  :file "running-celery-with-flask-docker-rabbitmq.html"
  :slug "running-celery-with-flask-docker-rabbitmq"
  :excerpt "Sample how to create a sample Flask application in Docker with Celery and RabbitMQ."
