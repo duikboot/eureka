@@ -1,6 +1,9 @@
 
+.PHONY: all
+all: clean convert-md-html
+
 .PHONY: convert-md-html
-convert-md-html: clean
+convert-md-html:
 	for f in *.md; do pandoc "$$f" -s -o "$${f%.md}.html"; done
 
 .PHONY: clean
