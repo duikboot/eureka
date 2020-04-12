@@ -1,0 +1,7 @@
+(:date-published "2020-04-07"
+ :author "Jeroen Peters"
+ :title "Run your Selinium tests using 'services' in the cloud with Bitbucket Pipelines"
+ :file "run-selenium-tests-services-bitbucket-pipelines-cloud.html"
+ :slug "run-selenium-tests-services-bitbucket-pipelines-cloud"
+ :excerpt "An example of how you can leverage services to help you test in Bitbucket pipelines"
+ :tags ("php" "selenium" "docker" "ci" "continues integration" "bitbucket"))

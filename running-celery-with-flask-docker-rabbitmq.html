@@ -1,23 +1,15 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>running-celery-with-flask-docker-rabbitmq</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
 </head>
 <body>
 <h1 id="sample-dockerized-flask-application-using-celery-flower-rabbitmq-and-postgresql.">Sample dockerized Flask application using Celery, Flower, Rabbitmq and PostgreSQL.</h1>
-<p>Based on <a href="https://www.toptal.com/flask/flask-production-recipes">Zero to Hero: Flask Production Recipes</a>, which didn’t run on my machine, so I altered the code a litte.. Futhermore I added Flower to monitor the Celery tasks.</p>
+<p>Based on <a href="https://www.toptal.com/flask/flask-production-recipes">Zero to Hero: Flask Production Recipes</a>, which didn't run on my machine, so I altered the code a litte.. Futhermore I added Flower to monitor the Celery tasks.</p>
 <p>You can clone the code from github: <a href="https://github.com/duikboot/flask-docker-celery-rabbitmq">duikboot/flask-docker-celery-rabbitmq</a> It uses:</p>
 <ul>
 <li>Flask</li>
@@ -35,7 +27,10 @@
 <p>When it runs, you can test it with several curl posts request and check it running in the Flower interface.</p>
 <pre><code>curl --data &#39;{json}&#39; -H &#39;Content-Type: application/json&#39; 0.0.0.0:8000/api/process_data</code></pre>
 <p>It will return a task_id, which you can search for in Flower <a href="http://0.0.0.0:9999/tasks">http://localhost:9999</a>.</p>
-<p><img src="/posts/images/flower.png" title="Running Flower." /></p>
+<div class="figure">
+<img src="/posts/images/flower.png" title="Running Flower." />
+
+</div>
 <p>The RabbitMQ interface <a href="http://0.0.0.0:15672/">http://localhost:15672</a> with login: - username: rabbit_user - password: rabbit_password</p>
 </body>
 </html>
