@@ -73,13 +73,40 @@ you could just use the following line to connect to that service.
 $this->webDriver = RemoteWebDriver::create('http://localhost:4444/wd/hub', $capabilities);
 ```
 
-## Final bitbucket-pipelines.yml
+### Using the service with Selenium / Steward
 In the example I'll be using a PHP website installation which needs some 
 `composer` dependencies. Also, the Selenium tests are being executed by a
 tool named [Steward](https://github.com/lmc-eu/steward), which makes writing
 tests easier and takes care of connecting to the browser, creating beautiful 
 reports, screenshots, saving html-sources on failures and the lot.
 Ofcourse, you can also use Selenium standalone.
+
+In this example Steward is instructed to listen to "localhost:4444" for the
+instance of the browser, but you cannot see that in the pipelines-config,
+as this config is saved in the repository.
+
+Steward is being installed with the line 
+`composer install --no-interaction --working-dir=tests/steward`.
+This allows us to only install it on specific cases, rather than including
+it as a development dependency, as it installs quite a big heap of ~~shit~~
+dependencies. Installing it as a dev dependency is an option of course.
+
+The website we're about to test is also being setup with composer and a
+test-db import. After this, it's served with PHP's built-in webserver.
+
+## Final bitbucket-pipelines.yml
+So, what will the final BitBucket Pipelines file look like?
+
+A small recap, we will:
+  * build the base on a php-pipeline image, which already contains
+MySQL;
+  * import the test-database;
+  * install the Steward testsuite runner
+  * install the websites dependencies;
+  * start the webserver
+  * run the Steward testsuite
+
+This will result in the following `bitbucket-pipelines.yml` file:
 
 ```yaml
 image: pyguerder/bitbucket-pipelines-php72
@@ -109,17 +136,23 @@ definitions:
       image: selenium/standalone-chrome:3.141.59-oxygen
       ports:
         - "4444:4444"
-        - "5900:5900"
-    selenium-firefox:
-      image: selenium/standalone-firefox:2.46.0
-      ports:
-        - "4444:4444"
-        - "5900:5900"
 ```
 
+## The result after running the testsuite
+You can combine multiple steps in Bitbucket Pipelines and you can even use 
+multiple services at the same time. I chose to use one service for one step at
+this point but I might be combining all the tests together (this will probably
+also use less build-minutes).
+
+Anyway, when everything works according to plan (btw, "_I love it when a plan comes
+together_") you should see a happy green screen like this:
 
 ![](/posts/images/bitbucket-pipelines-result.png "The endresult of Selenium testing in Bitbucket Pipelines") 
 
-**Last note:** Please be aware that by using a service, your build-minutes will
+There are almost endless possibilities with these ingredients.
+
+Happy testing / pipelining!
+
+**One more thing:** Please be aware that by using a service, your build-minutes will
 be doubled. So if you're on a free plan, instead of 50 minutes, 
 you will have 25 minutes to build for free.
